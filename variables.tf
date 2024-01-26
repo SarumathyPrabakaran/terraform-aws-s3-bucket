@@ -3,3 +3,6 @@ variable "region_name" {
   default = "us-east-1"
 }
 
+variable "bucket_name" {
+  description = "The name of the s3 bucket to create"
+}
