@@ -1,4 +1,4 @@
-resource "aws_s3_bucket" "s3_bucket" {
+resource "aws_s3_bucket" "s3_module" {
   bucket = var.bucket_name
   tags = {
     environment = "Production"
@@ -6,23 +6,23 @@ resource "aws_s3_bucket" "s3_bucket" {
   }
 }
 
-resource "aws_s3_bucket_ownership_controls" "s3_bucket_own" {
-  bucket = aws_s3_bucket.s3_bucket.id
+resource "aws_s3_bucket_ownership_controls" "s3_module" {
+  bucket = aws_s3_bucket.s3_module.id
   rule {
     object_ownership = "BucketOwnerPreferred"
   }
 }
 
-resource "aws_s3_bucket_acl" "s3_bucket_acl" {
-  depends_on = [aws_s3_bucket_ownership_controls.s3_bucket_own]
+resource "aws_s3_bucket_acl" "s3_module" {
+  depends_on = [aws_s3_bucket_ownership_controls.s3_module]
 
-  bucket = aws_s3_bucket.s3_bucket.id
+  bucket = aws_s3_bucket.s3_module.id
   acl    = var.bucket_acl
 }
 
 
-resource "aws_s3_bucket_versioning" "s3_bucket_versioning" {
-  bucket = aws_s3_bucket.s3_bucket.id
+resource "aws_s3_bucket_versioning" "s3_module" {
+  bucket = aws_s3_bucket.s3_module.id
   versioning_configuration {
     status = var.bucket_versioning
   }

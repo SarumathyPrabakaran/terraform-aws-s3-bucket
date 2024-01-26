@@ -4,7 +4,7 @@ variable "region_name" {
 }
 
 variable "bucket_name" {
-    default = "sarumathy-27012024-bucket"
+
   description = "The name of the s3 bucket to create"
 }
 
