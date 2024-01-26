@@ -6,3 +6,8 @@ variable "region_name" {
 variable "bucket_name" {
   description = "The name of the s3 bucket to create"
 }
+
+variable "bucket_acl" {
+  description = "ACL for the bucket"
+  default = "private"
+}
