@@ -3,8 +3,12 @@ variable "region_name" {
   default = "us-east-1"
 }
 
-variable "bucket_name" {
+variable "module_version" {
+  description = "Version of the Terraform module"
+  default     = "1.0.0"
+}
 
+variable "bucket_name" {
   description = "The name of the s3 bucket to create"
 }
 
