@@ -17,7 +17,7 @@ variable "bucket_acl" {
   default = "private"
 }
 
-variable "bucket_versioning" {
+variable "versioning_enabled" {
     description = "Versioning for the bucket- Enabled/Disabled state"
     default = "Enabled"
   

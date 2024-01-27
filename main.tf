@@ -24,6 +24,6 @@ resource "aws_s3_bucket_acl" "s3_module" {
 resource "aws_s3_bucket_versioning" "s3_module" {
   bucket = aws_s3_bucket.s3_module.id
   versioning_configuration {
-    status = var.bucket_versioning
+    status = var.versioning_enabled
   }
 }
