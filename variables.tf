@@ -9,12 +9,13 @@ variable "module_version" {
 }
 
 variable "bucket_name" {
+  default = "aws-saru-210304"
   description = "The name of the s3 bucket to create"
 }
 
 variable "bucket_acl" {
   description = "ACL for the bucket - private, public-read, public-read-write, aws-exec-read, authenticated-read, and log-delivery-write"
-  default = "private"
+  default = "public-read"
 }
 
 variable "versioning_enabled" {
@@ -22,3 +23,10 @@ variable "versioning_enabled" {
     default = "Enabled"
   
 }
+
+variable "public_access" {
+  description = "Public access for the bucket- true/false state"
+  type = bool
+  default = false
+}
+
