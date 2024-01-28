@@ -5,22 +5,23 @@ This Terraform module deploys an S3 bucket on AWS.
 
 ## Version
 
-The current version of the module is v1.0.0.
+The current version of the module is v1.1.0.
 
 ## Usage
 ```hcl
 module "my_s3_bucket" {
-  source = "git::https://github.com/SarumathyPrabakaran/terraform-aws-s3-bucket.git?ref=v1.0.0"
+  source = "git::https://github.com/SarumathyPrabakaran/terraform-aws-s3-bucket.git?ref=v1.1.0"
   bucket_name         = "any-unique-bucket-name"
   bucket_acl          = "private"  # Optional, default is "private"
   versioning_enabled  = true       # Optional, default is false
+  public_access = true             # Optional, default is false
 }
 ```
 ## Inputs
 1. bucket_name (Required): The name of the S3 bucket.
 2. bucket_acl (Optional, Default: "private"): The access control list (ACL) for the bucket.
-3. versioning_enabled (Optional, Default: false): Whether versioning should be enabled for the bucket.
-
+3. versioning_enabled (Optional, Default: Enabled): Whether versioning should be enabled for the bucket.
+4. public_acccess (Optional, Default: false): Whether the bucket should be publicly accessible.
 
 ## Outputs
 1. s3_bucket_name: The name of the created S3 bucket.
@@ -34,7 +35,7 @@ Ensure you have Terraform installed on your machine.
 
 ```
 module "my_s3_bucket" {
-  source = "git::https://github.com/SarumathyPrabakaran/terraform-aws-s3-bucket.git?ref=v1.0.0"
+  source = "git::https://github.com/SarumathyPrabakaran/terraform-aws-s3-bucket.git?ref=v1.1.0"
 
   bucket_name         = "any-unique-bucket-name"
   bucket_acl          = "private"

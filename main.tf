@@ -7,19 +7,6 @@ resource "aws_s3_bucket" "s3_module" {
 }
 
 
-resource "aws_s3_bucket_cors_configuration" "s3_module" {
-  bucket = aws_s3_bucket.s3_module.id
-
-  cors_rule {
-    allowed_headers = ["*"]
-    allowed_methods = ["GET", "HEAD"]
-    allowed_origins = ["*"]
-    expose_headers  = ["ETag"]
-    max_age_seconds = 3000
-  }
-}
-
-
 resource "aws_s3_bucket_ownership_controls" "s3_module" {
   bucket = aws_s3_bucket.s3_module.id
   rule {
@@ -36,7 +23,6 @@ resource "aws_s3_bucket_acl" "s3_module" {
   bucket = aws_s3_bucket.s3_module.id
   acl    = var.bucket_acl
 }
-
 
 
 resource "aws_s3_bucket_public_access_block" "s3_module" {
@@ -92,3 +78,18 @@ resource "aws_s3_bucket_policy" "s3_module" {
 
   depends_on = [aws_s3_bucket_public_access_block.s3_module]
 }
+
+
+
+resource "aws_s3_bucket_cors_configuration" "s3_module" {
+  bucket = aws_s3_bucket.s3_module.id
+
+  cors_rule {
+    allowed_headers = ["*"]
+    allowed_methods = ["GET", "HEAD"]
+    allowed_origins = ["*"]
+    expose_headers  = ["ETag"]
+    max_age_seconds = 3000
+  }
+}
+
