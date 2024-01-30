@@ -6,7 +6,7 @@ variable "region_name" {
 
 variable "module_version" {
   description = "Version of the Terraform module"
-  default     = "1.1.0"
+  default     = "1.2.0"
 }
 
 variable "bucket_name" {
@@ -17,8 +17,13 @@ variable "bucket_name" {
 variable "bucket_acl" {
   description = "ACL for the bucket - private, public-read, public-read-write, aws-exec-read, authenticated-read, and log-delivery-write"
   type        = string
-  default     = "public-read"
+  default     = "private"
 }
+
+locals {
+  is_public_acl = contains(["public-read", "public-read-write"], var.bucket_acl)
+}
+
 
 variable "versioning_enabled" {
   description = "Versioning for the bucket- Enabled/Disabled state"
@@ -28,9 +33,5 @@ variable "versioning_enabled" {
 
 }
 
-variable "public_access" {
-  description = "Public access for the bucket- true/false state"
-  type        = bool
-  default     = false
-}
+
 

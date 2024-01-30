@@ -26,7 +26,7 @@ resource "aws_s3_bucket_acl" "s3_module" {
 
 
 resource "aws_s3_bucket_public_access_block" "s3_module" {
-  count  = var.public_access ? 1 : 0
+  count  = local.is_public_acl ? 1 : 0
   bucket = aws_s3_bucket.s3_module.id
 
   block_public_acls       = false
@@ -44,7 +44,7 @@ resource "aws_s3_bucket_versioning" "s3_module" {
 }
 
 resource "aws_s3_bucket_policy" "s3_module" {
-  count = var.public_access ? 1 : 0
+  count = local.is_public_acl ? 1 : 0
 
   bucket = aws_s3_bucket.s3_module.id
   policy = jsonencode({
